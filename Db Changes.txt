@@ -1,0 +1,30 @@
+For all tables rename the id's with respective table Id's. The name Id is confusing when we write queries like joins. To make this easier we should keep the id's column name as similar to the table name suffix with id.
+Ex: Order Table : Order_Id is the column name instead of having just "Id".
+
+Order table should have the additional column as IsVendorCalled bit not null
+This column is for whenever the customer place order the vendor has to accept, before accept, the vendor has to make a call then only he can accept it.
+
+Place Order:
+once the user place the order the request will sent to the vendor, vendor will accept the order. Order status will change from Requested to Accepted.
+Once the vendor called and if user click on confirm vendor the order status will get change from Accepted to Confirmed
+once vendor reach to the user location the order status will change from Confirmed to complete.
+
+Cancel Order: The order status will change to Cancelled.
+Order table should have another columns such as CanceldBy binary(16) null, CancelReason Varchar(max)
+The CanceldBy Column is used to know who cancel the order either vendor/Customer.
+The Cancel Reason: To log the reason why the user/Vendor wants to cancel the order.
+
+VendorRating:
+We should have the unique constraint on Id and OrderId in VendorRating table.
+as one vendor can have multiple orders. The primary key on Id will not work need to think.
+
+MyFavouriteVendors:
+New table to store the list of favourite vendors for the user.
+Columns: Id binary(16) not null, UserId binary(16) not null, VendorId binary(16) not null
+
+here the id is just for record purpose. There is no use of it though. If we dont want this id column then we should be make sure this table should not have any primary key columns. Because one user can have multiple favourite vendors.
+
+Customer:
+This table should have additional column as IsAccountActive bit not null (0 - Active or 1- InActive).
+This column is used for whenever the user wants to deactivate his account this flag will be set.
+
