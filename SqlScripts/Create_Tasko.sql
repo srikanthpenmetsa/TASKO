@@ -213,7 +213,7 @@ BEGIN
     
     IF(@ORDER_COUNT > 0)
       BEGIN
-         SET @ORDER_ID = 'TASKO' + CONVERT(varchar, @START_INDEX_ORDER_ID + @ORDER_COUNT + 1)
+         SET @ORDER_ID = 'TASKO' + CONVERT(varchar, @START_INDEX_ORDER_ID + @ORDER_COUNT)
       END
     ELSE 
       BEGIN
