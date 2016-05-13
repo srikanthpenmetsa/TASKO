@@ -30,8 +30,8 @@ INSERT INTO [dbo].CUSTOMER values(newid(),'Shivaji123','shivaji123@gmail.com','9
 INSERT INTO [dbo].CUSTOMER values(newid(),'Shivaji456','shivaji456@gmail.com','9876543210')
 SELECT * FROM [dbo].Customer
 
-INSERT INTO [dbo].[ORDER] values(newid(),(select VENDOR_SERVICE_ID from [dbo].VENDOR_SERVICES where VENDOR_ID in (select VENDOR_ID from [dbo].Vendor WHERE NAME='chandra') AND SERVICE_ID IN (SELECT SERVICE_ID FROM [dbo].[SERVICES] WHERE NAME='Tube Lights')) ,(SELECT CUSTOMER_ID FROM [dbo].CUSTOMER WHERE NAME='Shivaji'),Getdate(),(SELECT ORDER_STATUS_Id FROM [dbo].ORDER_STATUS WHERE NAME='Requested'),'kphb')
-INSERT INTO [dbo].[ORDER] values(newid(),(select VENDOR_SERVICE_ID from [dbo].VENDOR_SERVICES where VENDOR_ID in (select VENDOR_ID from [dbo].Vendor WHERE NAME='Srikanth') AND SERVICE_ID IN (SELECT SERVICE_ID FROM [dbo].[SERVICES] WHERE NAME='Plumber')) ,(SELECT CUSTOMER_ID FROM [dbo].CUSTOMER WHERE NAME='Shivaji123'),Getdate(),(SELECT ORDER_STATUS_Id FROM [dbo].ORDER_STATUS WHERE NAME='Requested'),'kphb')
+INSERT INTO [dbo].[ORDER] values(dbo.GenerateOrderID(),(select VENDOR_SERVICE_ID from [dbo].VENDOR_SERVICES where VENDOR_ID in (select VENDOR_ID from [dbo].Vendor WHERE NAME='chandra') AND SERVICE_ID IN (SELECT SERVICE_ID FROM [dbo].[SERVICES] WHERE NAME='Tube Lights')) ,(SELECT CUSTOMER_ID FROM [dbo].CUSTOMER WHERE NAME='Shivaji'),Getdate(),(SELECT ORDER_STATUS_Id FROM [dbo].ORDER_STATUS WHERE NAME='Requested'),'kphb')
+INSERT INTO [dbo].[ORDER] values(dbo.GenerateOrderID(),(select VENDOR_SERVICE_ID from [dbo].VENDOR_SERVICES where VENDOR_ID in (select VENDOR_ID from [dbo].Vendor WHERE NAME='Srikanth') AND SERVICE_ID IN (SELECT SERVICE_ID FROM [dbo].[SERVICES] WHERE NAME='Plumber')) ,(SELECT CUSTOMER_ID FROM [dbo].CUSTOMER WHERE NAME='Shivaji123'),Getdate(),(SELECT ORDER_STATUS_Id FROM [dbo].ORDER_STATUS WHERE NAME='Requested'),'kphb')
 SELECT * FROM [dbo].[ORDER]
 
 INSERT INTO [dbo].VENDOR_RATING values((select VENDOR_ID from [dbo].Vendor WHERE NAME='chandra'),
