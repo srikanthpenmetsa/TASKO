@@ -197,3 +197,30 @@ REFERENCES [dbo].[ORDER] ([ORDER_ID])
 GO
 ALTER TABLE [dbo].[CUSTOMER_RATING] CHECK CONSTRAINT [CUSTOMER_RATING_ORDER_FK]
 GO
+
+/*********** Functions **************************/
+CREATE FUNCTION dbo.GenerateOrderID()
+RETURNS varchar(max) 
+AS 
+-- Returns the New Order ID
+BEGIN
+    DECLARE @ORDER_ID varchar(max);
+    DECLARE @START_INDEX_ORDER_ID int;
+    SET @START_INDEX_ORDER_ID = 1000;
+    DECLARE @ORDER_COUNT int;
+    
+    SELECT @ORDER_COUNT = Count(*) FROM dbo.[ORDER]
+    
+    IF(@ORDER_COUNT > 0)
+      BEGIN
+         SET @ORDER_ID = 'TASKO' + CONVERT(varchar, @START_INDEX_ORDER_ID + @ORDER_COUNT + 1)
+      END
+    ELSE 
+      BEGIN
+         SET @ORDER_ID = 'TASKO' + CONVERT(varchar, @START_INDEX_ORDER_ID)
+      END 
+      
+    RETURN @ORDER_ID;
+END;
+GO
+
