@@ -1,324 +1,199 @@
+---------------------------------------------------------------------------------------------------
+-- All Copy Rights are reserved to Tasko.in
 USE [Tasko]
 GO
-/****** Object:  Table [dbo].[Vendor]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
+----------------------------------------------------------------------------------------------------------
+
 GO
-SET QUOTED_IDENTIFIER ON
+CREATE TABLE [dbo].[SERVICES](
+	[SERVICE_ID] Binary (16) NOT NULL ,
+	[NAME] varchar(max) NOT NULL,
+	[PARENT_SERVICE_ID] Binary (16) NOT NULL ,
+    CONSTRAINT [SERVICES_PK] PRIMARY KEY CLUSTERED(SERVICE_ID))
 GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Vendor](
-	[Vendor_Id] [binary](16) NOT NULL,
-	[Name] [varchar](max) NOT NULL,
-	[VendorId] [int] NULL,
-	[MobileNumber] [varchar](50) NOT NULL,
-	[Address] [varchar](50) NOT NULL,
-	[Photo] [image] NULL,
-	[EmployeeCount] [int] NOT NULL,
-	[BaseRate] [decimal](18, 0) NOT NULL,
-	[IsVerified] [bit] NOT NULL,
-	[IsLive] [bit] NOT NULL,
-	[TimeSpentOnApp] [time](7) NOT NULL,
-	[ActiveTimePerDay] [time](7) NOT NULL,
-	[DataConsumption] [decimal](18, 0) NOT NULL,
-	[CallsToCustomerCare] [int] NOT NULL,
- CONSTRAINT [PK_Vendor] PRIMARY KEY CLUSTERED 
-(
-	[Vendor_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Services]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Services](
-	[Service_Id] [binary](16) NOT NULL,
-	[Name] [varchar](max) NOT NULL,
-	[ParentService] [binary](16) NULL,
- CONSTRAINT [PK_Services] PRIMARY KEY CLUSTERED 
-(
-	[Service_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[OrderStatus]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[OrderStatus](
-	[OrderStatus_Id] [binary](16) NOT NULL,
-	[Name] [varchar](max) NOT NULL,
- CONSTRAINT [PK_OrderStatus] PRIMARY KEY CLUSTERED 
-(
-	[OrderStatus_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Issues]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Issues](
-	[Issues_Id] [binary](16) NOT NULL,
-	[Name] [varchar](max) NOT NULL,
- CONSTRAINT [PK_Issues] PRIMARY KEY CLUSTERED 
-(
-	[Issues_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[IdProofs]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[IdProofs](
-	[IdProofs_Id] [binary](16) NOT NULL,
-	[Name] [varchar](max) NOT NULL,
- CONSTRAINT [PK_IdProofs] PRIMARY KEY CLUSTERED 
-(
-	[IdProofs_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Customer](
-	[Customer_Id] [binary](16) NOT NULL,
-	[Name] [varchar](max) NOT NULL,
-	[EmailAddress] [varchar](max) NOT NULL,
-	[MobileNumber] [varchar](max) NOT NULL,
- CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
-(
-	[Customer_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[VendorServices]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[VendorServices](
-	[VendorServices_Id] [binary](16) NOT NULL,
-	[VendorId] [binary](16) NOT NULL,
-	[ServiceId] [binary](16) NOT NULL,
-	[IsActive] [bit] NOT NULL,
- CONSTRAINT [PK_VendorServices] PRIMARY KEY CLUSTERED 
-(
-	[VendorServices_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[VendorProof]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[VendorProof](
-	[VendorProof_Id] [binary](16) NOT NULL,
-	[VendorId] [binary](16) NOT NULL,
-	[ProofId] [binary](16) NOT NULL,
-	[Proof] [varchar](max) NOT NULL,
- CONSTRAINT [PK_VendorProof] PRIMARY KEY CLUSTERED 
-(
-	[VendorProof_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[VendorIssues]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[VendorIssues](
-	[VendorIssues_Id] [binary](16) NOT NULL,
-	[VendorId] [binary](16) NOT NULL,
-	[CustomerId] [binary](16) NOT NULL,
-	[IssueId] [binary](16) NOT NULL,
-	[Comments] [varchar](max) NULL,
- CONSTRAINT [PK_VendorIssues] PRIMARY KEY CLUSTERED 
-(
-	[VendorIssues_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Order]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Order](
-	[Order_Id] [binary](16) NOT NULL,
-	[VendorServiceId] [binary](16) NOT NULL,
-	[CustomerId] [binary](16) NOT NULL,
-	[RequestedDate] [datetime] NOT NULL,
-	[Status] [binary](16) NOT NULL,
-	[OrderLocation] [varchar](max) NULL,
- CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
-(
-	[Order_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[VendorRating]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[VendorRating](
-	[VendorRating_Id] [binary](16) NOT NULL,
-	[ServiceQuality] [decimal](18, 2) NOT NULL,
-	[Punctuality] [decimal](18, 2) NOT NULL,
-	[Courtesy] [decimal](18, 2) NOT NULL,
-	[Price] [decimal](18, 2) NOT NULL,
-	[ReviewDate] [datetime] NOT NULL,
-	[Comments] [varchar](max) NULL,
-	[OrderId] [binary](16) NOT NULL,
- CONSTRAINT [PK_VendorRating] PRIMARY KEY CLUSTERED 
-(
-	[VendorRating_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[CustomerRating]    Script Date: 05/12/2016 08:57:10 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[CustomerRating](
-	[CustomerRating_Id] [binary](16) NOT NULL,
-	[OrderId] [binary](16) NOT NULL,
-	[Rating] [decimal](18, 2) NOT NULL,
-	[Comment] [varchar](max) NULL,
- CONSTRAINT [PK_CustomerRating] PRIMARY KEY CLUSTERED 
-(
-	[CustomerRating_Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
+
 /****** Object:  ForeignKey [FK_ParentService]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[Services]  WITH CHECK ADD  CONSTRAINT [FK_ParentService] FOREIGN KEY([ParentService])
-REFERENCES [dbo].[Services] ([Service_Id])
+ALTER TABLE [dbo].[SERVICES]  WITH CHECK ADD  CONSTRAINT [PARENT_SERVICE_ID_FK] FOREIGN KEY([PARENT_SERVICE_ID])
+REFERENCES [dbo].[SERVICES] ([SERVICE_ID])
 GO
-ALTER TABLE [dbo].[Services] CHECK CONSTRAINT [FK_ParentService]
+ALTER TABLE [dbo].[SERVICES] CHECK CONSTRAINT [PARENT_SERVICE_ID_FK]
 GO
-/****** Object:  ForeignKey [FK_ServiceId]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[VendorServices]  WITH CHECK ADD  CONSTRAINT [FK_ServiceId] FOREIGN KEY([ServiceId])
-REFERENCES [dbo].[Services] ([Service_Id])
+
+CREATE TABLE [dbo].[ORDER_STATUS](
+	[ORDER_STATUS_ID] Binary(16) NOT NULL,
+	[NAME] varchar(max) NOT NULL,
+    CONSTRAINT [ORDER_STATUS_PK] PRIMARY KEY CLUSTERED(ORDER_STATUS_ID))
 GO
-ALTER TABLE [dbo].[VendorServices] CHECK CONSTRAINT [FK_ServiceId]
+    
+CREATE TABLE [dbo].[ISSUES](
+	[ISSUE_ID] Binary(16) NOT NULL,
+	[NAME] varchar(max) NOT NULL,
+    CONSTRAINT [ISSUES_PK] PRIMARY KEY CLUSTERED(ISSUE_ID))
 GO
-/****** Object:  ForeignKey [FK_VendorId]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[VendorServices]  WITH CHECK ADD  CONSTRAINT [FK_VendorId] FOREIGN KEY([VendorId])
-REFERENCES [dbo].[Vendor] ([Vendor_Id])
+
+CREATE TABLE [dbo].[ID_PROOFS](
+	[ID_PROOF_ID] Binary(16) NOT NULL,
+	[NAME] varchar(max) NOT NULL,
+ CONSTRAINT [ID_PROOFS_PK] PRIMARY KEY CLUSTERED(ID_PROOF_ID))
+
 GO
-ALTER TABLE [dbo].[VendorServices] CHECK CONSTRAINT [FK_VendorId]
+
+--For now I removed the VendorId column as i dont see any use case
+CREATE TABLE [dbo].[VENDOR](
+	[VENDOR_ID] Binary (16) NOT NULL ,
+	[NAME] varchar(max) NOT NULL,
+	[MOBILE_NUMBER] [varchar](50) NOT NULL,
+	[ADDRESS] varchar(max) NOT NULL,
+	[PHOTO] [image] NULL,
+	[EMPLOYEE_COUNT] int NOT NULL,
+	[BASE_RATE] decimal(18, 0) NOT NULL,
+	[IS_VENDOR_VERIFIED] bit NOT NULL,
+	[IS_VENDOR_LIVE] bit NOT NULL,
+	[TIME_SPENT_ON_APP] time(7) NOT NULL,
+	[ACTIVE_TIME_PER_DAY] time(7) NOT NULL,
+	[DATA_CONSUMPTION] decimal(18, 0) NOT NULL,
+	[CALLS_TO_CUSTOMER_CARE] int NOT NULL,
+    CONSTRAINT [VENDOR_PK] PRIMARY KEY CLUSTERED(VENDOR_ID))
 GO
-/****** Object:  ForeignKey [FK_IdProof]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[VendorProof]  WITH CHECK ADD  CONSTRAINT [FK_IdProof] FOREIGN KEY([ProofId])
-REFERENCES [dbo].[IdProofs] ([IdProofs_Id])
+
+CREATE TABLE [dbo].[VENDOR_SERVICES](
+	[VENDOR_SERVICE_ID] Binary(16) NOT NULL,
+	[VENDOR_ID] Binary(16) NOT NULL,
+	[SERVICE_ID] Binary(16) NOT NULL,
+	[IS_VENDOR_SERVICE_ACTIVE] bit NOT NULL,
+    CONSTRAINT [VENDOR_SERVICES_PK] PRIMARY KEY CLUSTERED(VENDOR_SERVICE_ID))   
 GO
-ALTER TABLE [dbo].[VendorProof] CHECK CONSTRAINT [FK_IdProof]
+
+/****** Object:  ForeignKey [VENDOR_SERVICES_SERVICES_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[VENDOR_SERVICES]  WITH CHECK ADD  CONSTRAINT [VENDOR_SERVICES_SERVICES_FK] FOREIGN KEY([SERVICE_ID])
+REFERENCES [dbo].[SERVICES] ([SERVICE_ID])
 GO
-/****** Object:  ForeignKey [FK_ProofVendor]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[VendorProof]  WITH CHECK ADD  CONSTRAINT [FK_ProofVendor] FOREIGN KEY([VendorId])
-REFERENCES [dbo].[Vendor] ([Vendor_Id])
+ALTER TABLE [dbo].[VENDOR_SERVICES] CHECK CONSTRAINT [VENDOR_SERVICES_SERVICES_FK]
 GO
-ALTER TABLE [dbo].[VendorProof] CHECK CONSTRAINT [FK_ProofVendor]
+
+/****** Object:  ForeignKey [VENDOR_SERVICES_VENDOR_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[VENDOR_SERVICES]  WITH CHECK ADD  CONSTRAINT [VENDOR_SERVICES_VENDOR_FK] FOREIGN KEY([VENDOR_ID])
+REFERENCES [dbo].[VENDOR] ([VENDOR_ID])
 GO
-/****** Object:  ForeignKey [FK_VendorIssues_Issues]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[VendorIssues]  WITH CHECK ADD  CONSTRAINT [FK_VendorIssues_Issues] FOREIGN KEY([IssueId])
-REFERENCES [dbo].[Issues] ([Issues_Id])
+ALTER TABLE [dbo].[VENDOR_SERVICES] CHECK CONSTRAINT [VENDOR_SERVICES_VENDOR_FK]
 GO
-ALTER TABLE [dbo].[VendorIssues] CHECK CONSTRAINT [FK_VendorIssues_Issues]
+
+CREATE TABLE [dbo].[VENDOR_PROOF](
+	[VENDOR_PROOF_ID] Binary(16) NOT NULL,
+	[VENDOR_ID] Binary(16) NOT NULL,
+	[ID_PROOF_ID] Binary(16) NOT NULL,
+	[PROOF] varchar(max) NOT NULL,
+    CONSTRAINT [VENDOR_PROOF_PK] PRIMARY KEY CLUSTERED(VENDOR_PROOF_ID))
 GO
-/****** Object:  ForeignKey [FK_VendorIssues_Vendor]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[VendorIssues]  WITH CHECK ADD  CONSTRAINT [FK_VendorIssues_Vendor] FOREIGN KEY([VendorId])
-REFERENCES [dbo].[Vendor] ([Vendor_Id])
+
+/****** Object:  ForeignKey [VENDOR_PROOF_ID_PROOFS_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[VENDOR_PROOF]  WITH CHECK ADD  CONSTRAINT [VENDOR_PROOF_ID_PROOFS_FK] FOREIGN KEY([ID_PROOF_ID])
+REFERENCES [dbo].[ID_PROOFS] ([ID_PROOF_ID])
 GO
-ALTER TABLE [dbo].[VendorIssues] CHECK CONSTRAINT [FK_VendorIssues_Vendor]
+ALTER TABLE [dbo].[VENDOR_PROOF] CHECK CONSTRAINT [VENDOR_PROOF_ID_PROOFS_FK]
 GO
-/****** Object:  ForeignKey [FK_Order_Customer]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK_Order_Customer] FOREIGN KEY([CustomerId])
-REFERENCES [dbo].[Customer] ([Customer_Id])
+
+/****** Object:  ForeignKey [VENDOR_PROOF_VENDOR_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[VENDOR_PROOF]  WITH CHECK ADD  CONSTRAINT [VENDOR_PROOF_VENDOR_FK] FOREIGN KEY([VENDOR_ID])
+REFERENCES [dbo].[VENDOR] ([VENDOR_ID])
 GO
-ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [FK_Order_Customer]
+ALTER TABLE [dbo].[VENDOR_PROOF] CHECK CONSTRAINT [VENDOR_PROOF_VENDOR_FK]
 GO
+
+CREATE TABLE [dbo].[VENDOR_ISSUES](
+	[VENDOR_ISSUE_ID] Binary(16) NOT NULL,
+	[VENDOR_ID] Binary(16) NOT NULL,
+	[CUSTOMER_ID] Binary(16) NOT NULL,
+	[ISSUE_ID] Binary(16) NOT NULL,
+	[COMMENTS] varchar(max) NULL,
+    CONSTRAINT [VENDOR_ISSUES_PK] PRIMARY KEY CLUSTERED(VENDOR_ISSUE_ID))
+GO
+
+/****** Object:  ForeignKey [VENDOR_ISSUES_ISSUES_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[VENDOR_ISSUES]  WITH CHECK ADD  CONSTRAINT [VENDOR_ISSUES_ISSUES_FK] FOREIGN KEY([ISSUE_ID])
+REFERENCES [dbo].[ISSUES] ([ISSUE_ID])
+GO
+ALTER TABLE [dbo].[VENDOR_ISSUES] CHECK CONSTRAINT [VENDOR_ISSUES_ISSUES_FK]
+GO
+
+/****** Object:  ForeignKey [VENDOR_ISSUES_VENDOR_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[VENDOR_ISSUES]  WITH CHECK ADD  CONSTRAINT [VENDOR_ISSUES_VENDOR_FK] FOREIGN KEY([VENDOR_ID])
+REFERENCES [dbo].[VENDOR] ([VENDOR_ID])
+GO
+ALTER TABLE [dbo].[VENDOR_ISSUES] CHECK CONSTRAINT [VENDOR_ISSUES_VENDOR_FK]
+GO
+
+CREATE TABLE [dbo].[CUSTOMER](
+	[CUSTOMER_ID] Binary(16) NOT NULL,
+	[NAME] varchar(max) NOT NULL,
+	[EMAIL_ADDRESS] varchar(max) NOT NULL,
+	[MOBILE_NUMBER] varchar(max) NOT NULL,
+ CONSTRAINT [CUSTOMER_PK] PRIMARY KEY CLUSTERED(CUSTOMER_ID))
+ 
+GO
+
+CREATE TABLE [dbo].[ORDER](
+	[ORDER_ID] Binary(16) NOT NULL,
+	[VENDOR_SERVICE_ID] Binary(16) NOT NULL,
+	[CUSTOMER_ID] Binary(16) NOT NULL,
+	[REQUESTED_DATE] datetime NOT NULL,
+	[ORDER_STATUS_ID] Binary(16) NOT NULL,
+	[ORDER_LOCATION] varchar(max) NULL,
+    CONSTRAINT [ORDER_PK] PRIMARY KEY CLUSTERED([ORDER_ID]))
+GO
+
 /****** Object:  ForeignKey [FK_Order_OrderStatus]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK_Order_OrderStatus] FOREIGN KEY([Status])
-REFERENCES [dbo].[OrderStatus] ([OrderStatus_Id])
+ALTER TABLE [dbo].[ORDER]  WITH CHECK ADD  CONSTRAINT [ORDER_ORDER_STATUS_FK] FOREIGN KEY([ORDER_STATUS_ID])
+REFERENCES [dbo].[ORDER_STATUS] ([ORDER_STATUS_ID])
 GO
-ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [FK_Order_OrderStatus]
+ALTER TABLE [dbo].[ORDER] CHECK CONSTRAINT [ORDER_ORDER_STATUS_FK]
 GO
-/****** Object:  ForeignKey [FK_Order_VendorServices]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK_Order_VendorServices] FOREIGN KEY([VendorServiceId])
-REFERENCES [dbo].[VendorServices] ([VendorServices_Id])
+
+/****** Object:  ForeignKey [ORDER_CUSTOMER_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[ORDER]  WITH CHECK ADD  CONSTRAINT [ORDER_CUSTOMER_FK] FOREIGN KEY([CUSTOMER_ID])
+REFERENCES [dbo].[CUSTOMER] ([CUSTOMER_ID])
 GO
-ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [FK_Order_VendorServices]
+ALTER TABLE [dbo].[ORDER] CHECK CONSTRAINT [ORDER_CUSTOMER_FK]
 GO
-/****** Object:  ForeignKey [FK_VendorRating_Order]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[VendorRating]  WITH CHECK ADD  CONSTRAINT [FK_VendorRating_Order] FOREIGN KEY([OrderId])
-REFERENCES [dbo].[Order] ([Order_Id])
+
+/****** Object:  ForeignKey [ORDER_VENDOR_SERVICES_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[ORDER]  WITH CHECK ADD  CONSTRAINT [ORDER_VENDOR_SERVICES_FK] FOREIGN KEY([VENDOR_SERVICE_ID])
+REFERENCES [dbo].[VENDOR_SERVICES] ([VENDOR_SERVICE_ID])
 GO
-ALTER TABLE [dbo].[VendorRating] CHECK CONSTRAINT [FK_VendorRating_Order]
+ALTER TABLE [dbo].[ORDER] CHECK CONSTRAINT [ORDER_VENDOR_SERVICES_FK]
 GO
-/****** Object:  ForeignKey [FK_CustomerRating_Order]    Script Date: 05/12/2016 08:57:10 ******/
-ALTER TABLE [dbo].[CustomerRating]  WITH CHECK ADD  CONSTRAINT [FK_CustomerRating_Order] FOREIGN KEY([OrderId])
-REFERENCES [dbo].[Order] ([Order_Id])
+
+CREATE TABLE [dbo].[VENDOR_RATING](
+	[VENDOR_RATING_ID] Binary(16) NOT NULL,
+	[SERVICE_QUALITY] decimal(18, 2) NOT NULL,
+	[PUNCTUALITY] decimal(18, 2) NOT NULL,
+	[COURTESY] decimal(18, 2) NOT NULL,
+	[PRICE] decimal(18, 2) NOT NULL,
+	[REVIEW_DATE] datetime NOT NULL,
+	[COMMENTS] varchar(max) NULL,
+	[ORDER_ID] Binary(16) NOT NULL,
+    CONSTRAINT [VENDOR_RATING_PK] PRIMARY KEY CLUSTERED(VENDOR_RATING_ID))
 GO
-ALTER TABLE [dbo].[CustomerRating] CHECK CONSTRAINT [FK_CustomerRating_Order]
+
+/****** Object:  ForeignKey [VENDOR_RATING_ORDER_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[VENDOR_RATING]  WITH CHECK ADD  CONSTRAINT [VENDOR_RATING_ORDER_FK] FOREIGN KEY([ORDER_ID])
+REFERENCES [dbo].[ORDER] ([ORDER_ID])
+GO
+ALTER TABLE [dbo].[VENDOR_RATING] CHECK CONSTRAINT [VENDOR_RATING_ORDER_FK]
+GO
+
+CREATE TABLE [dbo].[CUSTOMER_RATING](
+	[CUSTOMER_RATING_ID] Binary(16) NOT NULL,
+	[ORDER_ID] Binary(16) NOT NULL,
+	[RATING] decimal(18, 2) NOT NULL,
+	[COMMENTS] varchar(max) NULL,
+ CONSTRAINT [CUSTOMER_RATING_PK] PRIMARY KEY CLUSTERED(CUSTOMER_RATING_ID))
+
+GO
+
+/****** Object:  ForeignKey [CUSTOMER_RATING_ORDER_FK]    Script Date: 05/12/2016 08:57:10 ******/
+ALTER TABLE [dbo].[CUSTOMER_RATING]  WITH CHECK ADD  CONSTRAINT [CUSTOMER_RATING_ORDER_FK] FOREIGN KEY([ORDER_ID])
+REFERENCES [dbo].[ORDER] ([ORDER_ID])
+GO
+ALTER TABLE [dbo].[CUSTOMER_RATING] CHECK CONSTRAINT [CUSTOMER_RATING_ORDER_FK]
 GO
