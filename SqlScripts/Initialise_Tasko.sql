@@ -28,6 +28,8 @@ INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Accepted')
 INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Confirmed')
 INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Cancelled')
 INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Completed')
+INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Cancelled By Vendor')
+INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Cancelled By Customer')
 SELECT * FROM [dbo].[ORDER_STATUS]
 
   
