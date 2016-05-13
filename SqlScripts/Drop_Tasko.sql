@@ -4,27 +4,29 @@ USE [Tasko]
 GO
 ----------------------------------------------------------------------------------------------------------
 
-Drop Table [dbo].[CUSTOMER_RATING]
+DROP TABLE [dbo].[CUSTOMER_RATING]
 Go
-Drop Table [dbo].[VENDOR_ISSUES]
+DROP TABLE [dbo].[VENDOR_ISSUES]
 Go
-Drop Table [dbo].[VENDOR_PROOF]
+DROP TABLE [dbo].[VENDOR_PROOF]
 Go
-Drop Table [dbo].[ISSUES]
+DROP TABLE [dbo].[ISSUES]
 Go
-Drop Table [dbo].[VENDOR_RATING]
+DROP TABLE [dbo].[VENDOR_RATING]
 Go
-Drop Table [dbo].[ID_PROOFS]
+DROP TABLE [dbo].[ID_PROOFS]
 Go
-Drop Table [dbo].[ORDER]
+DROP TABLE [dbo].[ORDER]
 Go
-Drop Table [dbo].[ORDER_STATUS]
+DROP TABLE [dbo].[ORDER_STATUS]
 Go
-Drop Table [dbo].[CUSTOMER]
+DROP TABLE [dbo].[CUSTOMER]
 Go
-Drop Table [dbo].[VENDOR_SERVICES]
+DROP TABLE [dbo].[VENDOR_SERVICES]
 Go
-Drop Table [dbo].[VENDOR]
+DROP TABLE [dbo].[VENDOR]
 Go
-Drop Table [dbo].[SERVICES]
+DROP TABLE [dbo].[SERVICES]
+Go
+Drop FUNCTION [dbo].[GenerateOrderID]
 Go
