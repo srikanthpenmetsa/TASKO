@@ -1,4 +1,4 @@
-﻿USE [Tasko]
+USE [Tasko]
 GO
 /****** Object:  Table [dbo].[Vendor]    Script Date: 05/12/2016 08:57:10 ******/
 SET ANSI_NULLS ON
