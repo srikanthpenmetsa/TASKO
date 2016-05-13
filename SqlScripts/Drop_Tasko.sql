@@ -1,28 +1,30 @@
-﻿/* This sql file is used to drop all the used Tables and stored procedures */
-Use [Tasko]
-Go
+----------------------------------------------------------------------------------------------------------
+--------------------------- All Copy Rights are reserved to Tasko.in--------------------------------------
+USE [TestDB]
+GO
+----------------------------------------------------------------------------------------------------------
 
-Drop Table [dbo].[Issues]
+Drop Table [dbo].[CUSTOMER_RATING]
 Go
-Drop Table [dbo].[IdProofs]
+Drop Table [dbo].[VENDOR_ISSUES]
 Go
-Drop Table [dbo].[Order]
+Drop Table [dbo].[VENDOR_PROOF]
 Go
-Drop Table [dbo].[Vendor]
+Drop Table [dbo].[ISSUES]
 Go
-Drop Table [dbo].[Services]
+Drop Table [dbo].[VENDOR_RATING]
 Go
-Drop Table [dbo].[OrderStatus]
+Drop Table [dbo].[ID_PROOFS]
 Go
-Drop Table [dbo].[Customer]
+Drop Table [dbo].[ORDER]
 Go
-Drop Table [dbo].[VendorServices]
+Drop Table [dbo].[ORDER_STATUS]
 Go
-Drop Table [dbo].[VendorProof]
+Drop Table [dbo].[CUSTOMER]
 Go
-Drop Table [dbo].[VendorIssues]
+Drop Table [dbo].[VENDOR_SERVICES]
 Go
-Drop Table [dbo].[VendorRating]
+Drop Table [dbo].[VENDOR]
 Go
-Drop Table [dbo].[CustomerRating]
+Drop Table [dbo].[SERVICES]
 Go
