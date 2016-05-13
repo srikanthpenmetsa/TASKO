@@ -1,29 +1,33 @@
-﻿/****** Script for SelectTopNRows command from SSMS  ******/
+---------------------------------------------------------------------------------------------------------- 
+--------------------------- All Copy Rights are reserved to Tasko.in-------------------------------------- 
+USE [Tasko] 
+GO 
+---------------------------------------------------------------------------------------------------------- 
     
 -------- Services TestData --------------
-insert into [Tasko].[dbo].[Services] values(NEWID(),'Electrician',null)
-insert into [Tasko].[dbo].[Services] values(NEWID(),'Plumber',null)
-insert into [Tasko].[dbo].[Services] values(NEWID(),'Carpenter',null)
+INSERT INTO [dbo].[Services] values(NEWID(),'Electrician',null)
+INSERT INTO [dbo].[Services] values(NEWID(),'Plumber',null)
+INSERT INTO [dbo].[Services] values(NEWID(),'Carpenter',null)
 --- Sub services of Electrician Service
-insert into [Tasko].[dbo].[Services] values(NEWID(),'AC',(select Service_Id from [Tasko].[dbo].[Services] where Name ='Electrician'))
-insert into [Tasko].[dbo].[Services] values(NEWID(),'FAN and Cooler',(select Service_Id from [Tasko].[dbo].[Services] where Name ='Electrician'))
-insert into [Tasko].[dbo].[Services] values(NEWID(),'Tube Lights',(select Service_Id from [Tasko].[dbo].[Services] where Name ='Electrician'))  
-select * from [Tasko].[dbo].[Services]
+INSERT INTO [dbo].[Services] values(NEWID(),'AC',(SELECT SERVICE_ID FROM [dbo].[Services] WHERE NAME ='Electrician'))
+INSERT INTO [dbo].[Services] values(NEWID(),'FAN and Cooler',(SELECT SERVICE_ID FROM [dbo].[Services] WHERE NAME ='Electrician'))
+INSERT INTO [dbo].[Services] values(NEWID(),'Tube Lights',(SELECT SERVICE_ID FROM [dbo].[Services] WHERE NAME ='Electrician'))  
+SELECT * FROM [dbo].[Services]
   
 ------------ ID Proof TestData -----------
-insert into [Tasko].[dbo].[IdProofs] values(NEWID(),'PAN Card')
-insert into [Tasko].[dbo].[IdProofs] values(NEWID(),'Passport')
-insert into [Tasko].[dbo].[IdProofs] values(NEWID(),'Aadhar Card')
-insert into [Tasko].[dbo].[IdProofs] values(NEWID(),'Voter Id')
-select * from [Tasko].[dbo].[IdProofs]
+INSERT INTO [dbo].[ID_PROOFS] values(NEWID(),'PAN Card')
+INSERT INTO [dbo].[ID_PROOFS] values(NEWID(),'Passport')
+INSERT INTO [dbo].[ID_PROOFS] values(NEWID(),'Aadhar Card')
+INSERT INTO [dbo].[ID_PROOFS] values(NEWID(),'Voter Id')
+SELECT * FROM [dbo].[ID_PROOFS]
 
 ----- Order Status TestData-----
-insert into [Tasko].[dbo].[OrderStatus] values(newid(), 'Requested')
-insert into [Tasko].[dbo].[OrderStatus] values(newid(), 'Pending')
-insert into [Tasko].[dbo].[OrderStatus] values(newid(), 'Accepted')
-insert into [Tasko].[dbo].[OrderStatus] values(newid(), 'Confirmed')
-insert into [Tasko].[dbo].[OrderStatus] values(newid(), 'Cancelled')
-insert into [Tasko].[dbo].[OrderStatus] values(newid(), 'Completed')
-select * from [Tasko].[dbo].[OrderStatus]
+INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Requested')
+INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Pending')
+INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Accepted')
+INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Confirmed')
+INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Cancelled')
+INSERT INTO [dbo].[ORDER_STATUS] values(newid(), 'Completed')
+SELECT * FROM [dbo].[ORDER_STATUS]
 
   
