@@ -224,3 +224,32 @@ BEGIN
 END;
 GO
 
+/*********** Stored Procedures **************************/
+CREATE PROCEDURE [dbo].[usp_GetVendorDetails]
+(
+	@pVendorId Binary(16)
+)
+AS
+BEGIN
+
+SET NOCOUNT ON;
+
+SELECT VENDOR_ID, NAME,MOBILE_NUMBER FROM VENDOR (NOLOCK)
+WHERE VENDOR_ID = @pVendorId 
+
+END
+
+
+CREATE PROCEDURE [dbo].[usp_GetOrderDetails]
+(
+	@pOrderId Varchar(50)
+)
+AS
+BEGIN
+
+SET NOCOUNT ON;
+
+SELECT ORDER_ID, VENDOR_SERVICE_ID,CUSTOMER_ID FROM [ORDER] (NOLOCK)
+WHERE ORDER_ID = @pOrderId 
+
+END
