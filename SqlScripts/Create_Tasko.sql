@@ -239,7 +239,7 @@ WHERE VENDOR_ID = @pVendorId
 
 END
 
-
+GO
 CREATE PROCEDURE [dbo].[usp_GetOrderDetails]
 (
 	@pOrderId Varchar(50)
